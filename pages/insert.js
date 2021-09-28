@@ -24,6 +24,7 @@ export default function Home({ Component, pageProps }) {
       prec,
       stock
     };
+    console.log(data);
     fetch(
       "https://desafio09.herokuapp.com/api/productos?nombre=" +
         data.nombre +
@@ -41,10 +42,7 @@ export default function Home({ Component, pageProps }) {
         method: "post",
         body: JSON.stringify(data)
       }
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    ).catch((error) => console.log("error", error));
   };
 
   return (
@@ -103,7 +101,7 @@ export default function Home({ Component, pageProps }) {
           Precio:
           <input
             className="form-control"
-            id="cod"
+            id="prec"
             type="text"
             onChange={(e) => setPrec(e.target.value)}
           />
