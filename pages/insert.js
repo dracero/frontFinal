@@ -34,9 +34,9 @@ export default function Home({ Component, pageProps }) {
         data.cod +
         "&foto=" +
         data.foto +
-        "&precio" +
+        "&precio=" +
         data.prec +
-        "&stock" +
+        "&stock=" +
         data.stock,
       {
         method: "post",
