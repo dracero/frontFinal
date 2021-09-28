@@ -1,25 +1,34 @@
 import Link from "next/link";
+import Table from "react-bootstrap/Table";
 
 const Productos = ({ productos }) => {
   if (Array.isArray(productos)) {
-    console.log(productos);
     return (
       <div>
-        <h1>Desafio 4 Lectura general</h1>
-        <table>
-          <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Thumbnail</th>
-          </tr>
-          {productos.map((prod) => (
+        <h1>Desafio Proyecto Final</h1>
+        <Table striped bordered hover variant="dark">
+          <thead>
             <tr>
-              <td>{prod.title}</td>
-              <td>{prod.price}</td>
-              <td>{prod.thumbnail}</td>
+              <th scope="col">Nombre</th>
+              <th>Descripción</th>
+              <th>Foto</th>
+              <th>Precio</th>
+              <th>Stock</th>
             </tr>
+          </thead>
+          {productos.map((prod) => (
+            <tbody>
+              <tr key={prod.id}>
+                <td>{prod.nombre}</td>
+                <td>{prod.descripcion}</td>
+                <td>{prod.foto}</td>
+                <td>{prod.precio}</td>
+                <td>{prod.stock}</td>
+              </tr>
+            </tbody>
           ))}
-        </table>
+        </Table>
+        <p></p>
         <Link href="/">
           <a>Volver al menú</a>
         </Link>
@@ -37,7 +46,7 @@ export default Productos;
 
 //acá leo, llamo a getStaticProps para que en producción se pueda cachear
 export const getServerSideProps = async () => {
-  const res = await fetch("https://ds4-cdrhouse.herokuapp.com/api/productos/");
+  const res = await fetch("https://desafio09.herokuapp.com/api/productos/");
   const data = await res.json();
 
   return {

@@ -4,27 +4,27 @@ const Navbar = () => {
   return (
     <nav>
       <div className="logo">
-        <h1>Desafio 4 Coder House</h1>
+        <h1>Desafio Proyecto Final</h1>
       </div>
       <p></p>
       <Link href="/insert">
-        <a>Insertar</a>
+        <a>Insertar Producto</a>
       </Link>
       <p></p>
       <Link href="/read">
-        <a>Read</a>
+        <a>Leer Productos</a>
       </Link>
       <p></p>
       <Link href="/readid">
-        <a>Read by id</a>
+        <a>Leer producto por id</a>
       </Link>
       <p></p>
       <Link href="/modifica">
-        <a>Modifica by ID</a>
+        <a>Modificar un producto</a>
       </Link>
       <p></p>
       <Link href="/deleteid">
-        <a>Delete</a>
+        <a>Borrar un producto</a>
       </Link>
     </nav>
   );
