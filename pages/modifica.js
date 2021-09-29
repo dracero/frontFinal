@@ -6,43 +6,58 @@ import "regenerator-runtime/runtime";
 import Link from "next/link";
 
 export default function Home({ Component, pageProps }) {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [thumb, setThumb] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [desc, setDesc] = useState("");
+  const [cod, setCod] = useState("");
+  const [foto, setFoto] = useState("");
+  const [prec, setPrec] = useState("");
+  const [stock, setStock] = useState("");
   const [id, setId] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      "https://ds4-cdrhouse.herokuapp.com/api/productos/" + id
+      "https://desafio09.herokuapp.com/api/productos/" + id
     );
     const data = await res.json();
-    setTitle(data.title);
-    setPrice(data.price);
-    setThumb(data.thumbnail);
+    setNombre(data.nombre);
+    setDesc(data.descripcion);
+    setCod(data.codigo);
+    setFoto(data.foto);
+    setPrec(data.precio);
+    setStock(data.stock);
   };
 
   const update = async (e) => {
-    e.preventDefault();
+    //e.preventDefault(); //esto es para que recargue
     const data = {
-      title,
-      price,
-      thumb
+      nombre,
+      desc,
+      cod,
+      foto,
+      prec,
+      stock
     };
     fetch(
-      "https://ds4-cdrhouse.herokuapp.com/api/productos/" +
+      "https://desafio09.herokuapp.com/api/productos/" +
         id +
-        "?title=" +
-        data.title +
-        "&price=" +
-        data.price +
-        "&thumbnail=" +
-        data.thumb,
+        "?nombre=" +
+        data.nombre +
+        "&descripcion=" +
+        data.desc +
+        "&codigo=" +
+        data.cod +
+        "&foto=" +
+        data.foto +
+        "&precio=" +
+        data.prec +
+        "&stock=" +
+        data.stock,
       {
         method: "put",
         body: JSON.stringify(data)
       }
-    );
+    ).catch((error) => console.log("error", error));
   };
 
   return (
@@ -53,11 +68,14 @@ export default function Home({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Form class="text-right border border-light p-5" onSubmit={handleSubmit}>
+      <Form
+        className="text-right border border-light p-5"
+        onSubmit={handleSubmit}
+      >
         <Form.Label htmlFor="id">
           Ingrese el ID a moificar:
           <input
-            class="form-control"
+            className="form-control"
             id="id"
             type="text"
             onChange={(e) => setId(e.target.value)}
@@ -65,35 +83,68 @@ export default function Home({ Component, pageProps }) {
         </Form.Label>
         <p></p>
         <Form.Label htmlFor="name">
-          Title:
+          Nombre:
           <input
-            class="form-control"
-            id="title"
+            className="form-control"
+            id="nombre"
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
           />
         </Form.Label>
         <p></p>
         <Form.Label htmlFor="email">
-          Price:
+          Descripción:
           <input
-            class="form-control"
-            id="price"
+            className="form-control"
+            id="desc"
             type="text"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
           />
         </Form.Label>
         <p></p>
         <Form.Label htmlFor="email">
-          Thumbnail:
+          Código:
           <input
-            class="form-control"
-            id="thumb"
+            className="form-control"
+            id="cod"
             type="text"
-            value={thumb}
-            onChange={(e) => setThumb(e.target.value)}
+            value={cod}
+            onChange={(e) => setCod(e.target.value)}
+          />
+        </Form.Label>
+        <p></p>
+        <Form.Label htmlFor="email">
+          Foto:
+          <input
+            className="form-control"
+            id="foto"
+            type="text"
+            value={foto}
+            onChange={(e) => setFoto(e.target.value)}
+          />
+        </Form.Label>
+        <p></p>
+        <Form.Label htmlFor="email">
+          Precio:
+          <input
+            className="form-control"
+            id="precio"
+            type="text"
+            value={prec}
+            onChange={(e) => setPrec(e.target.value)}
+          />
+        </Form.Label>
+        <p></p>
+        <Form.Label htmlFor="email">
+          Stock:
+          <input
+            className="form-control"
+            id="stock"
+            type="text"
+            value={stock}
+            onChange={(e) => setStock(e.target.value)}
           />
         </Form.Label>
         <p></p>

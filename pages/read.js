@@ -17,13 +17,13 @@ const Productos = ({ productos }) => {
             </tr>
           </thead>
           {productos.map((prod) => (
-            <tbody>
+            <tbody key={prod.id + 6}>
               <tr key={prod.id}>
-                <td>{prod.nombre}</td>
-                <td>{prod.descripcion}</td>
-                <td>{prod.foto}</td>
-                <td>{prod.precio}</td>
-                <td>{prod.stock}</td>
+                <td key={prod.id + 1}>{prod.nombre}</td>
+                <td key={prod.id + 2}>{prod.descripcion}</td>
+                <td key={prod.id + 3}>{prod.foto}</td>
+                <td key={prod.id + 4}>{prod.precio}</td>
+                <td key={prod.id + 5}>{prod.stock}</td>
               </tr>
             </tbody>
           ))}

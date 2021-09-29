@@ -6,20 +6,26 @@ import "regenerator-runtime/runtime";
 import Link from "next/link";
 
 export default function Home({ Component, pageProps }) {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [thumb, setThumb] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [desc, setDesc] = useState("");
+  const [cod, setCod] = useState("");
+  const [foto, setFoto] = useState("");
+  const [prec, setPrec] = useState("");
+  const [stock, setStock] = useState("");
   const [id, setId] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      "https://ds4-cdrhouse.herokuapp.com/api/productos/" + id
-    );
+      "https://desafio09.herokuapp.com/api/productos/" + id
+    ).catch((error) => console.log("error", error));
     const data = await res.json();
-    setTitle(data.title);
-    setPrice(data.price);
-    setThumb(data.thumbnail);
+    setNombre(data.nombre);
+    setDesc(data.descripcion);
+    setCod(data.codigo);
+    setFoto(data.foto);
+    setPrec(data.precio);
+    setStock(data.stock);
   };
 
   return (
@@ -30,11 +36,14 @@ export default function Home({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Form class="text-right border border-light p-5" onSubmit={handleSubmit}>
+      <Form
+        className="text-right border border-light p-5"
+        onSubmit={handleSubmit}
+      >
         <Form.Label htmlFor="id">
           ID a leer:
           <input
-            class="form-control"
+            className="form-control"
             id="id"
             type="text"
             onChange={(e) => setId(e.target.value)}
@@ -42,39 +51,72 @@ export default function Home({ Component, pageProps }) {
         </Form.Label>
         <p></p>
         <Form.Label htmlFor="name">
-          Title:
+          Nombre:
           <input
-            class="form-control"
+            className="form-control"
             id="title"
             type="text"
-            value={title}
+            value={nombre}
             readonly="readonly"
           />
         </Form.Label>
         <p></p>
         <Form.Label htmlFor="email">
-          Price:
+          Descripción:
           <input
-            class="form-control"
+            className="form-control"
             id="price"
             type="text"
-            value={price}
+            value={desc}
             readonly="readonly"
           />
         </Form.Label>
         <p></p>
         <Form.Label htmlFor="email">
-          Thumbnail:
+          Código:
           <input
-            class="form-control"
+            className="form-control"
             id="thumb"
             type="text"
-            value={thumb}
+            value={cod}
             readonly="readonly"
           />
         </Form.Label>
         <p></p>
-        <Button type="submit">Send</Button>
+        <Form.Label htmlFor="email">
+          Foto:
+          <input
+            className="form-control"
+            id="thumb"
+            type="text"
+            value={foto}
+            readonly="readonly"
+          />
+        </Form.Label>
+        <p></p>
+        <Form.Label htmlFor="email">
+          Precio:
+          <input
+            className="form-control"
+            id="thumb"
+            type="text"
+            value={prec}
+            readonly="readonly"
+          />
+        </Form.Label>
+        <p></p>
+        <Form.Label htmlFor="email">
+          Stock:
+          <input
+            className="form-control"
+            id="thumb"
+            type="text"
+            value={stock}
+            readonly="readonly"
+          />
+        </Form.Label>
+        <p></p>
+        <Button type="submit">Leer</Button>
       </Form>
       <Link href="/">
         <a>Volver al menú</a>
