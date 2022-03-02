@@ -15,6 +15,11 @@ const Navbar = () => {
         <a>Menu Carrito</a>
       </Link>
       <p></p>
+      <p></p>
+      <Link href="/loginreg">
+        <a>Ingresar con Login Credentiales</a>
+      </Link>
+      <p></p>
     </nav>
   );
 };
