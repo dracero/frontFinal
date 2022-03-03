@@ -1,6 +1,6 @@
 import * as types from './types'
 
-// INCREMENT COUNTER BY 1
+// STORAGER THE TOKEN VALUE
 export const logtoken = (payload) => 
 ({
      type: types.LOGGED, 
