@@ -12,7 +12,7 @@ export default function Readcart({ Component, pageProps }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      "https://desafio09.herokuapp.com/api/carrito/" + id + "/productos/"
+      "https://trabajofinalcoder.herokuapp.com/api/carrito/" + id + "/productos/"
     ).catch((error) => console.log("error", error));
     const data = await res.json();
     setProd(data);

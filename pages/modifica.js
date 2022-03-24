@@ -17,7 +17,7 @@ export default function Home({ Component, pageProps }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      "https://desafio09.herokuapp.com/api/productos/" + id
+      "https://trabajofinalcoder.herokuapp.com/api/productos/" + id
     );
     const data = await res.json();
     setNombre(data.nombre);
@@ -39,7 +39,7 @@ export default function Home({ Component, pageProps }) {
       stock
     };
     fetch(
-      "https://desafio09.herokuapp.com/api/productos/" +
+      "https://trabajofinalcoder.herokuapp.com/api/productos/" +
         id +
         "?nombre=" +
         data.nombre +

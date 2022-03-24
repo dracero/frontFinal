@@ -10,7 +10,7 @@ export default function Home({ Component, pageProps }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); //esto es para que recargue
-    fetch("https://desafio09.herokuapp.com/api/carrito/" + cid, {
+    fetch("https://trabajofinalcoder.herokuapp.com/api/carrito/" + cid, {
       method: "delete"
     }).catch((error) => console.log("error", error));
   };

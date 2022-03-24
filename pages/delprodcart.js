@@ -18,7 +18,7 @@ export default function Home({ Component, pageProps }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      "https://desafio09.herokuapp.com/api/productos/" + id
+      "https://trabajofinalcoder.herokuapp.com/api/productos/" + id
     );
     const data = await res.json();
     setNombre(data.nombre);
@@ -32,7 +32,7 @@ export default function Home({ Component, pageProps }) {
   const delprod = async (e) => {
     e.preventDefault(); //esto es para que recargue
     fetch(
-      "https://desafio09.herokuapp.com/api/carrito/" + cid + "/productos/" + id,
+      "https://trabajofinalcoder.herokuapp.com/api/carrito/" + cid + "/productos/" + id,
       {
         method: "delete"
       }

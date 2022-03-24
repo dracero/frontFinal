@@ -17,7 +17,7 @@ export default function Home({ Component, pageProps }) {
   const handleSubmit = async (e) => {
     e.preventDefault(); //no quiero que se recargue
     const res = await fetch(
-      "https://desafio09.herokuapp.com/api/productos/" + id
+      "https://trabajofinalcoder.herokuapp.com/api/productos/" + id
     ).catch((error) => console.log("error", error));
     const data = await res.json();
     setNombre(data.nombre);
@@ -31,7 +31,7 @@ export default function Home({ Component, pageProps }) {
   const del = async (e) => {
     e.preventDefault(); //lo saco, quiero que se recargue la página
     const res = await fetch(
-      "https://desafio09.herokuapp.com/api/productos/" + id,
+      "https://trabajofinalcoder.herokuapp.com/api/productos/" + id,
       {
         method: "delete"
       }

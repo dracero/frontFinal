@@ -26,7 +26,7 @@ export default function Home({ Component, pageProps }) {
     };
     console.log(data);
     fetch(
-      "https://desafio09.herokuapp.com/api/productos?nombre=" +
+      "https://trabajofinalcoder.herokuapp.com/api/productos?nombre=" +
         data.nombre +
         "&descripcion=" +
         data.desc +

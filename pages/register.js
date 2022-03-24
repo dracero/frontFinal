@@ -36,7 +36,7 @@ export default function Home({ Component, pageProps }) {
       body: raw,
       redirect: 'follow'
     };
-    fetch("http://localhost:8080/api/auth/register", requestOptions)
+    fetch("https://trabajofinalcoder.herokuapp.com//api/auth/register", requestOptions)
     .then(response => response.text())
     .then(result => {
       console.log(result);

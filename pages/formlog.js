@@ -5,11 +5,14 @@ import Button from "react-bootstrap/Button";
 import "regenerator-runtime/runtime";
 import { useDispatch } from 'react-redux';
 import {logtoken} from '../actions';
+import Link from "next/link";
+import { useRouter } from 'next/router'
 
 export default function Home({ Component, pageProps }) {
   const [username, setNombre] = useState("");
   const [password, setPass] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,11 +30,14 @@ export default function Home({ Component, pageProps }) {
       body: raw,
       redirect: 'follow'
     };
-    fetch("http://localhost:8080/api/auth/login", requestOptions)
+    fetch("https://trabajofinalcoder.herokuapp.com/api/auth/login", requestOptions)
     .then(response => response.text())
     .then(result => {
       console.log(result);
       dispatch(logtoken(result))
+      setNombre("");
+      setPass("");
+      router.push('/')  
     })
     .catch(error => console.log('error', error));
   }
@@ -69,6 +75,9 @@ export default function Home({ Component, pageProps }) {
         <p></p>
         <Button type="submit">Send</Button>
       </Form>
+      <Link href="/">
+        <a>Volver al menú</a>
+      </Link>
     </div>
   );
 }

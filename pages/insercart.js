@@ -9,7 +9,7 @@ export default function Home({ Component, pageProps }) {
     //e.preventDefault();
     //borro el prevent default para que recargue la página
 
-    fetch("https://desafio09.herokuapp.com/api/carrito", {
+    fetch("https://trabajofinalcoder.herokuapp.com/api/carrito", {
       method: "post"
     }).catch((error) => console.log("error", error));
   };

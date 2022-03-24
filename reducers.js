@@ -10,7 +10,7 @@ const tokenreducer = (state = initialTimerState, action) => {
   switch (action.type) {
     case types.LOGGED:
       return {
-        token: action.payload,
+        token: JSON.parse(action.payload),
       }
     default:
       return state

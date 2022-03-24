@@ -1,8 +1,36 @@
 import Link from "next/link";
 import Table from "react-bootstrap/Table";
+import { useSelector } from 'react-redux'
+import { useState, useEffect } from "react";
 
-const Productos = ({ productos }) => {
-  if (Array.isArray(productos)) {
+
+
+const Productos = () => {
+    const [productos,setProd]=useState()
+    const token = useSelector((state) => state.token)
+    const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+                     setIsLoading(true)
+                     var requestOptions = {
+                     method: 'GET',
+                     redirect: 'follow'
+                    };
+                     fetch("https://trabajofinalcoder.herokuapp.com/api/products?secret_token="+token.token, requestOptions)
+                     .then(response => response.json())
+                     .then(result => {
+                                       setProd(result)
+                                       setIsLoading(false)
+                                     })
+                    .catch(error => console.log('error', error));
+                  }, [])            
+    if (isLoading) {
+                    return <p>Loading....</p>
+                   }
+    if (!productos ){
+                     return <p>No List to show</p>
+                    }
+    if(Array.isArray(productos)) {               
     return (
       <div>
         <h1>Desafio Proyecto Final</h1>
@@ -34,22 +62,16 @@ const Productos = ({ productos }) => {
         </Link>
       </div>
     );
-  } else
-    return (
-      <Link href="/">
-        <a>Volver al menú</a>
-      </Link>
-    );
+  }else{
+    return(
+        <div>
+        <Link href="/">
+          <a>Volver al menú</a>
+        </Link>
+        {console.log(productos)}
+      </div>  
+    )
+  }
 };
 
 export default Productos;
-
-//acá leo, llamo a getStaticProps para que en producción se pueda cachear
-export const getServerSideProps = async () => {
-  const res = await fetch("https://desafio09.herokuapp.com/api/productos/");
-  const data = await res.json();
-
-  return {
-    props: { productos: data }
-  };
-};
